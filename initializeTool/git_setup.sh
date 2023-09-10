@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# 更新软件包
+# Update package
 echo "Updating..."
 sudo apt update
 
-# 检查是否已经安装了Git
+# Check if Git is already installed
 
 if ! command -v git &> /dev/null; then
     echo "Git is not installed. Installing..."
     
-    # 根据不同的Linux发行版，使用不同的包管理工具进行安装
+    # Depending on the Linux distribution, use different package management tools for installation.
     if command -v apt-get &> /dev/null; then
         sudo apt-get update
         sudo apt-get install -y git
@@ -40,13 +40,13 @@ if [ -z "$mail" ]; then
     mail="traveller31415@gmail.com"
 fi
 
-# 设置Git的用户名和邮箱
+# Set Git username and email
 git config --global user.name "$userName"
 git config --global user.email "$mail"
 
-# 输出已设置的Git用户信息
-echo "已设置的Git用户名："
+# Output the set Git user information
+echo "The Git username that has been set is:"
 git config --global user.name
 
-echo "已设置的Git邮箱地址："
+echo "The Git email address that has been set is:"
 git config --global user.email
