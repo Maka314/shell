@@ -7,7 +7,9 @@
 ## 能做什么
 
 目前能一键安装`git`并设置用户名和邮箱，这样你就能开开心心的推送代码更改。
+
 你可以在这里找到它`shell/initializeTool/git_setup.sh`
+
 以及一个可能能够帮助你简化一些安装流程的脚本`shell/initializeTool/install.sh`
 
 ## 如何使用
