@@ -3,7 +3,23 @@
 REPO_LINK="git@github.com:Maka314/SeconFun.git"
 FOLDER_NAME="SeconFun"
 
-cd "$FOLDER_NAME" || { echo "Failed to change directory to $FOLDER_NAME"; exit 1; }
+if [ -d "$FOLDER_NAME" ]; then
+    cd "$FOLDER_NAME"
+else
+    git clone "$REPO_LINK"
+    cd "$FOLDER_NAME"
+fi
+
+if screen -ls | grep -q "$FOLDER_NAME"; then
+    echo "Screen session '$FOLDER_NAME' is running."
+else
+    echo "Screen session '$FOLDER_NAME' is not running."
+    screen -r "$FOLDER_NAME"
+    git pull
+    npm install
+    npm run build
+    npm start
+fi
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
